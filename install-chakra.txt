@@ -1,0 +1,23 @@
+https://chakra-ui.com/getting-started/vite-guide
+
+npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+
+2. Provider Setup#
+After installing Chakra UI, you need to set up the ChakraProvider at the root of your application.
+
+Go to the src directory and inside main.jsx or main.tsx, wrap ChakraProvider around App:
+
+import * as React from 'react'
+import { ChakraProvider } from '@chakra-ui/react'
+import * as ReactDOM from 'react-dom/client'
+
+const rootElement = document.getElementById('root')
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <ChakraProvider>
+      <App />
+    </ChakraProvider>
+  </React.StrictMode>,
+)
+
+There is a step 3 however it is optional.
