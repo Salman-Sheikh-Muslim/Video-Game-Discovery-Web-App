@@ -1,1 +1,7 @@
-The grid component in chakra works exactly like HTML grigs.
+The grid component in chakra works exactly like HTML grids.
+
+Chakra stores selected mode in the local storage so that it can remember it 
+in the future. It is remembered for future session.
+
+To dlete go to chrome dev tools selcts Application. In Application 
+slect Local storage and delete chakra-ui-color-mode.
