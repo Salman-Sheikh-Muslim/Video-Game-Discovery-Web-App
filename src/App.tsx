@@ -1,4 +1,5 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
+import NavBar from "./components/navbar";
 
 function App() {
   return (
@@ -13,8 +14,8 @@ function App() {
         }}
       >
         {/* //wider than 1024px */}
-        <GridItem area="nav" bg="coral">
-          Nav
+        <GridItem area="nav">
+          <NavBar></NavBar>
         </GridItem>
         {/* By using show we are specifying that Aside should only appear in large and above devices */}
         <Show above="lg">
