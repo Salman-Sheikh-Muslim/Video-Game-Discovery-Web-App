@@ -1,0 +1,1 @@
+The grid component in chakra works exactly like HTML grigs.
