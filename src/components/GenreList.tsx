@@ -1,14 +1,26 @@
+import { HStack, Image, List, ListItem, Text } from "@chakra-ui/react";
 import useGenres from "../Hooks/useGenres";
+import getCroppedImageURL from "../services/image-url";
 const GenreList = () => {
   //   const { genres } = useGenres();
   const { data } = useGenres();
 
   return (
-    <ul>
+    <List>
+      {/* List chakra component renders a list without bullet points. */}
       {data.map((genre) => (
-        <li key={genre.id}>{genre.name}</li>
+        <ListItem key={genre.id} paddingY="5px">
+          <HStack>
+            <Image
+              boxSize="32px"
+              borderRadius={8}
+              src={getCroppedImageURL(genre.image_background)}
+            />
+            <Text fontSize="lg">{genre.name}</Text>
+          </HStack>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 };
 

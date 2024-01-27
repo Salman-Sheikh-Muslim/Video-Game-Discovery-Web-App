@@ -14,6 +14,10 @@ function App() {
           base: `"nav" "main"`,
           lg: `"nav nav" "aside main"`,
         }}
+        templateColumns={{
+          base: "1fr",
+          lg: "200px 1fr",
+        }}
       >
         {/* //wider than 1024px */}
         <GridItem area="nav">
@@ -21,7 +25,7 @@ function App() {
         </GridItem>
         {/* By using show we are specifying that Aside should only appear in large and above devices */}
         <Show above="lg">
-          <GridItem area="aside">
+          <GridItem area="aside" paddingX={5}>
             <GenreList />
           </GridItem>
         </Show>
