@@ -49,7 +49,7 @@ const PlatformIconList = ({ platforms }: Props) => {
       {/*  marginY={1} // 1 is multipled by themespace=4px value define in chakra. So marginY will be 4px. */}
       {platforms.map((platform) => (
         //   <Text>{platform.name}</Text>
-        <Icon as={iconMap[platform.slug]} color="gray.500" />
+        <Icon key={platform.id} as={iconMap[platform.slug]} color="gray.500" />
         // In chakra we have various colors and each color comes in different shades.
       ))}
     </HStack>

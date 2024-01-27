@@ -5,8 +5,8 @@ const GenreListSkeleton = () => {
   return (
     <HStack>
       <Spinner />
-      <Skeleton boxSize="32px" borderRadius={8}></Skeleton>
-      <SkeletonText />
+      {/* <Skeleton boxSize="32px" borderRadius={8}></Skeleton>
+      <SkeletonText /> */}
     </HStack>
   );
 };
