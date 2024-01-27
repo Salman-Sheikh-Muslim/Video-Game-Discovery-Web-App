@@ -8,3 +8,7 @@ slect Local storage and delete chakra-ui-color-mode.
 
 When you press ctrl + T you get a search box in which you can search for function,
 classes, components any symbol that is in our project.
+
+Select text you want to wrap. To wrap a element in another element we can press
+shift + cntl + P. Now search for 'Wrap with Abbreviation' select it andthan start typing
+the name of the wrapping element.
