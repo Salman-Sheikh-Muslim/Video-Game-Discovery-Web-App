@@ -1,3 +1,4 @@
+import { GameQuery } from "../App";
 import useData from "./useData";
 import { Genre } from "./useGenres";
 
@@ -16,14 +17,21 @@ export interface Game {
 
 //params is a property AxiosRequestConfig Object
 const useGames = (
-  selectedGenre: Genre | null,
-  selectedPlatform: Platform | null
+  gameQuery: GameQuery
+  //   selectedGenre: Genre | null,
+  //   selectedPlatform: Platform | null
 ) =>
   useData<Game>(
     "/games",
-    { params: { genres: selectedGenre?.id, platforms: selectedPlatform?.id } },
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        platforms: gameQuery.platform?.id,
+      },
+    },
 
-    [selectedGenre?.id, selectedPlatform?.id]
+    [gameQuery]
+    // [selectedGenre?.id, selectedPlatform?.id]
   );
 
 export default useGames;
