@@ -5,3 +5,6 @@ in the future. It is remembered for future session.
 
 To dlete go to chrome dev tools selcts Application. In Application 
 slect Local storage and delete chakra-ui-color-mode.
+
+When you press ctrl + T you get a search box in which you can search for function,
+classes, components any symbol that is in our project.
