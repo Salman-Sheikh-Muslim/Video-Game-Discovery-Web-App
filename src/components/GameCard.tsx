@@ -14,7 +14,8 @@ const GameCard = ({ game }: Props) => {
   return (
     <Card>
       <Image src={getCroppedImageURL(game.background_image)} />
-      <CardBody>
+      <CardBody minHeight="100%">
+        {/* <CardBody minHeight="100%" bgColor="#202020" textColor="white"> */}
         {/* fonts size defined 2xl and so on defined Chakra */}
         {/* {game.parent_platforms.map(platform => <Text>{platform.platform.name}</Text>)} */}
         <HStack justifyContent="space-between" marginBottom={3}>
