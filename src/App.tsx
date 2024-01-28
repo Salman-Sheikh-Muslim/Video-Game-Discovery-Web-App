@@ -50,8 +50,8 @@ function App() {
             />
           </GridItem>
         </Show>
-        <GridItem area="main">
-          <Flex paddingLeft={10} marginBottom={1}>
+        <GridItem padding={5} area="main">
+          <Flex paddingBottom={10} marginBottom={1}>
             <Box marginRight={5}>
               <PlatformSelector
                 selectedPlatform={gameQuery.platform}
