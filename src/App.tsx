@@ -12,6 +12,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
@@ -39,7 +40,11 @@ function App() {
       >
         {/* //wider than 1024px */}
         <GridItem area="nav">
-          <NavBar></NavBar>
+          <NavBar
+            onSearch={(searchText) =>
+              setGameQuery({ ...gameQuery, searchText })
+            }
+          ></NavBar>
         </GridItem>
         {/* By using show we are specifying that Aside should only appear in large and above devices */}
         <Show above="lg">
