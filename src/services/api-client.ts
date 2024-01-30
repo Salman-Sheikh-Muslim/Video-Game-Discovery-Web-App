@@ -7,7 +7,7 @@ import axios from "axios"
 export default axios.create({ //exporting axios instance as a default object.
     baseURL: 'https://api.rawg.io/api',
     params:{
-        key: '8cf768320b944bb4a42083e8f82a785d'
+        key: 'xxxxxxxxxxxxxxxxxxxx'
     }
 })
 /*
