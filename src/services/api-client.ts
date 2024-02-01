@@ -1,7 +1,7 @@
 //we need to create an axsios instance with custom configuration in that configuration we are going to include the API key provide by RAWG website.
 import axios from "axios"
 
- const apiKey = import.meta.env.VITE_REACT_APP_RAWG_API_KEY;
+// const apiKey = import.meta.env.VITE_REACT_APP_RAWG_API_KEY;
 // const apiBaseURL = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
 
@@ -20,7 +20,7 @@ export default axios.create({ //exporting axios instance as a default object.
 
     baseURL: 'https://api.rawg.io/api',
     params:{
-        key:  apiKey,
+        key:  import.meta.env.VITE_REACT_APP_RAWG_API_KEY,
         
     }
 })
