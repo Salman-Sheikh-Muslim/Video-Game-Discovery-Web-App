@@ -1,0 +1,44 @@
+The grid component in chakra works exactly like HTML grids.
+
+Chakra stores selected mode in the local storage so that it can remember it 
+in the future. It is remembered for future session.
+
+To dlete go to chrome dev tools selcts Application. In Application 
+slect Local storage and delete chakra-ui-color-mode.
+
+When you press ctrl + T you get a search box in which you can search for function,
+classes, components any symbol that is in our project.
+
+Select text you want to wrap. To wrap a element in another element we can press
+shift + cntl + P. Now search for 'Wrap with Abbreviation' select it andthan start typing
+the name of the wrapping element.
+
+___________________
+
+React Query is a popular library for data management and caching in React applications.
+With React Query you never have to use the effect hook to  fetch data and 
+take care of errors and loading indicators all these conscepts are built into this
+library.
+
+It has additional features such as:
+
+caching
+Automatic Retry
+Automatic Refresh
+Paginated Queries
+Infinite Queries
+
+___________________
+
+Global State management
+
+Reducers
+Context
+Providers
+Zustand (State management library)
+
+___________________
+
+Routing allows multi-page applications with React
+
+React Router (Library)
