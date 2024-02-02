@@ -1,6 +1,8 @@
+import { useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../App";
-import useData from "./useData";
+import useData, { FetchResponse } from "./useData";
 import { Genre } from "./useGenres";
+import apiClient from "../services/api-client";
 
 export interface Platform {
   id: number;
@@ -17,25 +19,45 @@ export interface Game {
 }
 
 //params is a property AxiosRequestConfig Object
+// const useGames = (
+//   gameQuery: GameQuery
+//   //   selectedGenre: Genre | null,
+//   //   selectedPlatform: Platform | null
+//   //
+// ) =>
+//   useData<Game>(
+//     "/games",
+//     {
+//       params: {
+//         genres: gameQuery.genre?.id,
+//         platforms: gameQuery.platform?.id,
+//         ordering: gameQuery.sortOrder,
+//         search: gameQuery.searchText
+//       },
+//     },
+
+//     [gameQuery]
+//     // [selectedGenre?.id, selectedPlatform?.id]
+//   );
+
 const useGames = (
-  gameQuery: GameQuery
-  //   selectedGenre: Genre | null,
-  //   selectedPlatform: Platform | null
-  //
-) =>
-  useData<Game>(
-    "/games",
-    {
+   gameQuery: GameQuery
+  ) =>
+  useQuery<FetchResponse<Game>, Error>({
+    queryKey: ["Games",  gameQuery],
+    queryFn: () => apiClient
+    .get<FetchResponse<Game>>( "/games",  {
       params: {
         genres: gameQuery.genre?.id,
-        platforms: gameQuery.platform?.id,
+        parent_platforms: gameQuery.platform?.id,
         ordering: gameQuery.sortOrder,
         search: gameQuery.searchText
-      },
-    },
-
-    [gameQuery]
-    // [selectedGenre?.id, selectedPlatform?.id]
-  );
-
+      },})
+    .then((res) => res.data),
+    //.then((res) => res.data.results),
+    staleTime: 24 * 60 * 60 * 1000, // 24 hours
+  
+   
+    //[selectedGenre?.id, selectedPlatform?.id]
+    });
 export default useGames;
