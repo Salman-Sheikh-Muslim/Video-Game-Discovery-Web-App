@@ -1,8 +1,10 @@
 //we need to create an axsios instance with custom configuration in that configuration we are going to include the API key provide by RAWG website.
 import axios, { AxiosRequestConfig } from "axios"
-import { FetchResponse } from "./api-fetch-data";
 
-
+export interface FetchResponse<T> {
+    count: number;
+    results: T[];
+  }
 // const apiKey = import.meta.env.VITE_REACT_APP_RAWG_API_KEY;
 // const apiBaseURL = import.meta.env.VITE_REACT_APP_API_BASE_URL;
 
@@ -17,7 +19,12 @@ import { FetchResponse } from "./api-fetch-data";
   
 
 //Creating an axios instance with custom configuration.
-export default axios.create({ //exporting axios instance as a default object.
+
+/*
+With this configuration this key will be included in the query string
+of every http request we send to our backend.
+*/
+const axiosInstance = axios.create({ //exporting axios instance as a default object.
     // baseURL: apiBaseURL,
 
     baseURL: 'https://api.rawg.io/api',
@@ -26,28 +33,17 @@ export default axios.create({ //exporting axios instance as a default object.
         
     }
 })
-/*
-With this configuration this key will be included in the query string
-of every http request we send to our backend.
-*/
-// const axiosInstance = axios.create({ //exporting axios instance as a default object.
-//     // baseURL: apiBaseURL,
+class APIClient<T> {
+    endpoint: string;
+    constructor(endpoint: string) {
+    this.endpoint = endpoint;
+    }
 
-//     baseURL: 'https://api.rawg.io/api',
-//     params:{
-//         key:  import.meta.env.VITE_REACT_APP_RAWG_API_KEY,
-        
-//     }
-// })
-// class APIClient<T> {
-//     endpoint: string;
-//     constructor(endpoint: string) {
-//     this.endpoint = endpoint;
-//     }
+    getAll = (config: AxiosRequestConfig) => {
+    return axiosInstance
+    .get<FetchResponse<T>>(this.endpoint, config)
+    .then(res => res.data);
+    }
+}
 
-//     getAll = (config: AxiosRequestConfig) => {
-//     return axiosInstance
-//     .get<FetchResponse<T>>(this.endpoint, config)
-//     .then(res => res.data);
-//     }
-//}
+export default APIClient;

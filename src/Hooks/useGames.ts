@@ -1,8 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { GameQuery } from "../App";
-import apiClient  from "../services/api-client";
-import apiFetchData, { FetchResponse } from "../services/api-fetch-data";
 import { Platform } from "./usePlatforms";
+import APIClient, { FetchResponse } from "../services/api-client";
 
 export interface Game {
   id: number;
@@ -14,6 +13,7 @@ export interface Game {
 }
 
 //params is a property AxiosRequestConfig Object
+
 // const useGames = (
 //   gameQuery: GameQuery
 //   //   selectedGenre: Genre | null,
@@ -34,26 +34,24 @@ export interface Game {
 //     [gameQuery]
 //     // [selectedGenre?.id, selectedPlatform?.id]
 //   );
+const apiGames = new APIClient<Game>("/games" );
 
- const useGames = (gameQuery: GameQuery) => apiFetchData.getGames<Game>("Games","/games", gameQuery) 
-// (
-//    gameQuery: GameQuery
-//   ) =>
-//   useQuery<FetchResponse<Game>, Error>({
-//     queryKey: ["Games",  gameQuery],
-//     queryFn: () => apiClient
-//     .get<FetchResponse<Game>>( "/games",  {
-//       params: {
-//         genres: gameQuery.genre?.id,
-//         parent_platforms: gameQuery.platform?.id,
-//         ordering: gameQuery.sortOrder,
-//         search: gameQuery.searchText
-//       },})
-//     .then((res) => res.data),
-//     //.then((res) => res.data.results),
-//     staleTime: 24 * 60 * 60 * 1000, // 24 hours
+ //const useGames = (gameQuery: GameQuery) => apiFetchData.getGames<Game>("Games","/games", gameQuery) 
+ const useGames = (gameQuery: GameQuery) =>
+  useQuery<FetchResponse<Game>, Error>({
+    queryKey: ["Games",  gameQuery],
+    queryFn: () => apiGames.getAll( {
+      params: {
+        genres: gameQuery.genre?.id,
+        parent_platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchText
+      },}),
+  
+    //.then((res) => res.data.results),
+    staleTime: 24 * 60 * 60 * 1000, // 24 hours
   
    
-//     //[selectedGenre?.id, selectedPlatform?.id]
-//     });
+    //[selectedGenre?.id, selectedPlatform?.id]
+    });
 export default useGames;
