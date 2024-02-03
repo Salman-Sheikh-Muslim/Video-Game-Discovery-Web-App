@@ -34,7 +34,7 @@ const apiGames = new APIClient<Game>("/games" );
 
     getNextPageParam: (lastPage, allPages) => {
       // 1 -> 2
-                return lastPage.results.length > 0 ? allPages.length + 1 : undefined;
+                return lastPage.next ? allPages.length + 1 : undefined;
               }
       });
 export default useGames;
