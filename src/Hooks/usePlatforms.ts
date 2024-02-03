@@ -8,12 +8,8 @@ export interface Platform {
   slug: string;
 }
 
-//const usePlatforms = () => useData<Platform>("/platforms/lists/parents");
-//const usePlatforms = () => ({data: platform, isLoading: false, error: null});
-
 const apiPlatforms = new APIClient<Platform>("/genres");
 
-//const usePlatforms = () => apiFetchData.getGames<Platform>("Platforms","/platforms/lists/parents")
 const usePlatforms = () => 
 useQuery({
   queryKey: ["Platforms"],

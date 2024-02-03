@@ -8,10 +8,7 @@ export interface Genre {
   image_background: string;
 }
 const apiGenres = new APIClient<Genre>("/genres");
- //const useGenres = () => useData<Genre>("/genres");
-//const useGenres = () => ({data: genres, isLoading: false, error: null});
 
- //const useGenres = () => apiFetchData.getGames<Genre>("Genres","/genres")
  const useGenres = () => useQuery({
   queryKey: ["Genres"],
   queryFn: apiGenres.getAll,
@@ -24,10 +21,5 @@ no request to the backend will be send until the 24 hours pass.
 */
 })
 
-
-/*
-THe reason we should return an object with these properties is to minimize the impact
-of these changes on the consumer of this hook.
-*/
 
 export default useGenres;
