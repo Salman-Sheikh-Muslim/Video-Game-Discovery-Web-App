@@ -1,7 +1,7 @@
 import genres from "../data/genres";
 import { useQuery } from "@tanstack/react-query";
-import apiClient, { FetchResponse } from "../services/api-client";
-
+import apiClient from "../services/api-client";
+import apiFetchData, { FetchResponse } from "../services/api-fetch-data";
 export interface Genre {
   id: number;
   name: string;
@@ -10,20 +10,22 @@ export interface Genre {
  //const useGenres = () => useData<Genre>("/genres");
 //const useGenres = () => ({data: genres, isLoading: false, error: null});
 
-const useGenres = () => useQuery({
-  queryKey: ["Genres"],
-  queryFn: () => apiClient
-  .get<FetchResponse<Genre>>("/genres")
-  .then((res) => res.data),
+ const useGenres = () => apiFetchData.getGames<Genre>("Genres","/genres")
+ 
+//useQuery({
+//   queryKey: ["Genres"],
+//   queryFn: () => apiClient
+//   .get<FetchResponse<Genre>>("/genres")
+//   .then((res) => res.data),
 
-  staleTime: 24 * 60 * 60 * 1000, // 24 hours
-  initialData: {count: genres.length, results: genres}
-/*
-Initially the data is retrieved from the initialData property and stored inside the
-cache because our staleTime is 24 hours the data wil be considered fresh for 24 hours and
-no request to the backend will be send until the 24 hours pass.
-*/
-})
+//   staleTime: 24 * 60 * 60 * 1000, // 24 hours
+//   initialData: {count: genres.length, results: genres}
+// /*
+// Initially the data is retrieved from the initialData property and stored inside the
+// cache because our staleTime is 24 hours the data wil be considered fresh for 24 hours and
+// no request to the backend will be send until the 24 hours pass.
+// */
+// })
 
 
 /*
