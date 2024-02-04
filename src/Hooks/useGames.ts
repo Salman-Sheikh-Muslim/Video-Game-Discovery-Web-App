@@ -20,8 +20,8 @@ const apiGames = new APIClient<Game>("/games" );
     queryKey: ["Games",  gameQuery],
     queryFn: ({pageParam = 1}) => apiGames.getAll( {
       params: {
-        genres: gameQuery.genre?.id,
-        parent_platforms: gameQuery.platform?.id,
+        genres: gameQuery.genreId,
+        parent_platforms: gameQuery.platformId,
         ordering: gameQuery.sortOrder,
         search: gameQuery.searchText,
         page: pageParam,
