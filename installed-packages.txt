@@ -1,3 +1,9 @@
 Bootstrap
 react-icons
 axios
+
+___________________
+
+install command for automatic infinite scrolling:
+
+  npm install --save react-infinite-scroll-component

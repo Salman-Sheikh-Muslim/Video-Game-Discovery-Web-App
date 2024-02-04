@@ -3,6 +3,7 @@ import useGames from "../Hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
 import GameCardContainer from "./GameCardContainer";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { Genre } from "../Hooks/useGenres";
 import { GameQuery } from "../App";
 import React from "react";
@@ -35,33 +36,38 @@ const GameGrid = ({ gameQuery }: Props) => {
               <GameCardSkeleton />
             </GameCardContainer>
           ))}
-        {data?.pages.map((page, index) => (
-          <React.Fragment key={index}>
-            {page.results.map((game) => (
-              <GameCardContainer key={game.id}>
-                <GameCard game={game} />
-              </GameCardContainer>
-            ))}
-          </React.Fragment>
-        ))}
-        {/* {data?.results.map((game) => (
-        <GameCardContainer key={game.id}>
-          <GameCard game={game} />
-        </GameCardContainer>
-      ))} */}
-        {/* <button
-        className="btn btn-primary my-3"
-        disabled={isFetchingNextPage}
-        onClick={() => fetchNextPage()}
-      >
-        {isFetchingNextPage ? "Loading..." : "Load More"}
-      </button> */}
       </SimpleGrid>
-      {hasNextPage && (
+
+      <InfiniteScroll
+        dataLength={data?.pages.length !== undefined ? data.pages.length : 0}
+        next={fetchNextPage}
+        hasMore={true}
+        loader={<h4>Loading...</h4>}
+        style={{ display: "inline-block" }}
+        endMessage={
+          <p style={{ textAlign: "center" }}>
+            <b>Yay! You have seen it all</b>
+          </p>
+        }
+      >
+        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+          {data?.pages.map((page, index) => (
+            <React.Fragment key={index}>
+              {page.results.map((game) => (
+                <GameCardContainer key={game.id}>
+                  <GameCard game={game} />
+                </GameCardContainer>
+              ))}
+            </React.Fragment>
+          ))}
+        </SimpleGrid>
+      </InfiniteScroll>
+
+      {/* {hasNextPage && (
         <Button onClick={() => fetchNextPage()} marginY={6}>
           {isFetchingNextPage ? "Loading..." : "Load More"}
         </Button>
-      )}
+      )} */}
     </>
   );
 };
