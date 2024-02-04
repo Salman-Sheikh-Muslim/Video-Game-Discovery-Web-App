@@ -6,12 +6,14 @@ import useGenres from './useGenres';
 //     return data.results.find((item) => item.id === id);
 //   };
   
-const useLookUpPlatform = (id?: number) => {
-    const { data: platforms } = usePlatforms();
-    return platforms?.results.find((p) => p.id === id);
-    };
+const useLookUpGenre = (id?: number) => {
+        const { data: genres } = useGenres();
+     return  genres?.results.find(
+        (g) => g.id === id
+        );
+        };
 
-export default useLookUpPlatform
+export default useLookUpGenre 
 
 
 //  const useGenre = (id?: number) => {

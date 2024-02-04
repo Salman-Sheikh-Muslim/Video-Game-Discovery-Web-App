@@ -8,14 +8,14 @@ export interface Platform {
   slug: string;
 }
 
-const apiPlatforms = new APIClient<Platform>("/genres");
+const apiPlatforms = new APIClient<Platform>("/platforms/lists/parents");
 
 const usePlatforms = () => 
 useQuery({
   queryKey: ["Platforms"],
   queryFn: apiPlatforms.getAll,
   staleTime: 24 * 60 * 60 * 1000, // 24 hours
-  initialData: {count: platform.length, results: platform}
+  initialData: platform
 })
 /*
 Initially the data is retrieved from the initialData property and stored inside the

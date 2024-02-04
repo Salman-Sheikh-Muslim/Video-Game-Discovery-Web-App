@@ -3,8 +3,10 @@ import axios, { AxiosRequestConfig } from "axios"
 
 export interface FetchResponse<T> {
     count: number;
+    next: string | null;
     results: T[];
-    next?: string | null;
+  //  next: string | null;
+
   }
 // const apiKey = import.meta.env.VITE_REACT_APP_RAWG_API_KEY;
 // const apiBaseURL = import.meta.env.VITE_REACT_APP_API_BASE_URL;
