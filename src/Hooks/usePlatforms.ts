@@ -1,12 +1,13 @@
 import platform from "../data/platform";
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
-
+import ms from "ms";
 export interface Platform {
   id: number;
   name: string;
   slug: string;
 }
+
 
 const apiPlatforms = new APIClient<Platform>("/platforms/lists/parents");
 
@@ -14,7 +15,7 @@ const usePlatforms = () =>
 useQuery({
   queryKey: ["Platforms"],
   queryFn: apiPlatforms.getAll,
-  staleTime: 24 * 60 * 60 * 1000, // 24 hours
+  staleTime: ms('1d'), // 24 hours
   initialData: platform
 })
 /*
@@ -23,3 +24,4 @@ cache because our staleTime is 24 hours the data wil be considered fresh for 24 
 no request to the backend will be send until the 24 hours pass.
 */
 export default usePlatforms;
+

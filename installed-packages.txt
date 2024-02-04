@@ -7,3 +7,20 @@ ___________________
 install command for automatic infinite scrolling:
 
   npm install --save react-infinite-scroll-component
+
+___________________
+
+Library for time calculation:
+
+npm i ms
+
+need to install type declarations for this file separately
+
+
+We need types only for development and not for production So we are
+not going to ship them with our application to the client. So we need 
+to install this as a development dependency. 
+
+npm i --save-dev @types/ms
+or
+npm i -D @types/ms
