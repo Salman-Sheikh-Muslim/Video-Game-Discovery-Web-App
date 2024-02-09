@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import CriticScore from "./CriticScore";
-import { Platform } from "../entities/Platform";
+import Platform from "../entities/Platform";
 
 export interface Props {
   parent_platforms: { platform: Platform }[];

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient, { FetchResponse } from "../services/api-client";
-import { ScreenShots } from '../entities/ScreenShots'
+import  ScreenShots  from '../entities/ScreenShots'
 
 
 

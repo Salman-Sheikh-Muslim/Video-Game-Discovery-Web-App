@@ -9,7 +9,7 @@ const NavBar = () => (
   // Hstack allows us to add components and elements horizontally in it
   <HStack padding="10px">
     <Link to="/">
-      <Image src={logo} boxSize="60px"></Image>
+      <Image src={logo} boxSize="60px" objectFit="cover"></Image>
     </Link>
     <SearchInput />
     <ColorModeSwitch />

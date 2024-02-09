@@ -1,5 +1,5 @@
 import React from "react";
-import { Game } from "../entities/Game";
+import Game from "../entities/Game";
 import {
   Box,
   Card,

@@ -11,7 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import useGenres from "../Hooks/useGenres";
-import { Genre } from "../entities/Genre";
+import Genre from "../entities/Genre";
 import getCroppedImageURL from "../services/image-url";
 import GenreListSkeleton from "./GenreListSkeleton";
 import useGameQueryStore from "../storeGameQuery";
