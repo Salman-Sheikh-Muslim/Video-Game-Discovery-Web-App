@@ -42,3 +42,29 @@ ___________________
 Routing allows multi-page applications with React
 
 React Router (Library)
+
+___________________
+
+If we use state management libraries for state management like Zustand than it 
+makes our components less reusable because they rely on the stores existence to function.
+
+Passing data via props makes our components more self-contained and reusable because 
+they do not rely on a external data source.
+___________________
+
+React Router Library
+
+Setting up routes
+Handling errors
+Navigating between pages
+Dynamic routes
+Nested routes
+Private routes
+
+___________________
+
+Press Ctrl + Shift + P 
+
+Search for: 'Select typescript version'
+
+Select workspace version
