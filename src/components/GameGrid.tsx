@@ -1,4 +1,4 @@
-import { Button, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
+import { Box, Button, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGames from "../Hooks/useGames";
 import GameCard from "./GameCard";
 import GameCardSkeleton from "./GameCardSkeleton";
@@ -30,24 +30,26 @@ const GameGrid = () => {
         next={() => fetchNextPage()}
         loader={<Spinner />}
       >
-        <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
-          {isLoading &&
-            skeletons.map((skeleton) => (
-              <GameCardContainer key={skeleton}>
-                <GameCardSkeleton />
-              </GameCardContainer>
-            ))}
-
-          {data?.pages.map((page, index) => (
-            <React.Fragment key={index}>
-              {page.results.map((game) => (
-                <GameCardContainer key={game.id}>
-                  <GameCard game={game} />
+        <Box padding={2}>
+          <SimpleGrid columns={{ sm: 1, md: 2, lg: 3, xl: 4 }} spacing={6}>
+            {isLoading &&
+              skeletons.map((skeleton) => (
+                <GameCardContainer key={skeleton}>
+                  <GameCardSkeleton />
                 </GameCardContainer>
               ))}
-            </React.Fragment>
-          ))}
-        </SimpleGrid>
+
+            {data?.pages.map((page, index) => (
+              <React.Fragment key={index}>
+                {page.results.map((game) => (
+                  <GameCardContainer key={game.id}>
+                    <GameCard game={game} />
+                  </GameCardContainer>
+                ))}
+              </React.Fragment>
+            ))}
+          </SimpleGrid>
+        </Box>
       </InfiniteScroll>
     </>
   );
