@@ -1,5 +1,6 @@
 //we need to create an axsios instance with custom configuration in that configuration we are going to include the API key provide by RAWG website.
 import axios, { AxiosRequestConfig } from "axios"
+import exp from "constants";
 
 export interface FetchResponse<T> {
     count: number;
@@ -27,7 +28,7 @@ export interface FetchResponse<T> {
 With this configuration this key will be included in the query string
 of every http request we send to our backend.
 */
-const axiosInstance = axios.create({ //exporting axios instance as a default object.
+ export const axiosInstance = axios.create({ //exporting axios instance as a default object.
     // baseURL: apiBaseURL,
 
     baseURL: 'https://api.rawg.io/api',
@@ -36,6 +37,7 @@ const axiosInstance = axios.create({ //exporting axios instance as a default obj
         
     }
 })
+
 class APIClient<T> {
     endpoint: string;
     constructor(endpoint: string) {
@@ -47,6 +49,9 @@ class APIClient<T> {
     .get<FetchResponse<T>>(this.endpoint, config)
     .then(res => res.data);
     }
+  
+
+    
 }
 
 export default APIClient;
