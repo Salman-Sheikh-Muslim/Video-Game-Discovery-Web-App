@@ -1,20 +1,21 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import APIClient, { axiosInstance } from "../services/api-client";
-import axios from "axios";
+import useGame from "../Hooks/useGame";
+import { Text, Heading, Spinner } from "@chakra-ui/react";
 
 const GameDetailPage = () => {
-  const { gameId } = useParams();
-  const apiGamesDetail = axiosInstance.get(
-    `https://api.rawg.io/api/games/${gameId}`
-  );
-  console.log(apiGamesDetail);
+  const { slug } = useParams();
+  const { data: game, isLoading, error } = useGame(slug!); //by adding '!' to the slug we are telling the typescript compiler that this constant will never be null.
+
+  if (isLoading) return <Spinner />;
+
+  if (error || !game) throw error;
+
   return (
-    <div>
-      <h1>Game Detail Page</h1>
-      <p>Game ID: {gameId}</p>
-      <p>{}</p>
-    </div>
+    <>
+      <Heading>{game.name}</Heading>
+      <Text>{game.description_raw}</Text>
+    </>
   );
 };
 

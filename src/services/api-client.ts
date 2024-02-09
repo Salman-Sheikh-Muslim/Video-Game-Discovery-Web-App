@@ -28,7 +28,7 @@ export interface FetchResponse<T> {
 With this configuration this key will be included in the query string
 of every http request we send to our backend.
 */
- export const axiosInstance = axios.create({ //exporting axios instance as a default object.
+ const axiosInstance = axios.create({ //exporting axios instance as a default object.
     // baseURL: apiBaseURL,
 
     baseURL: 'https://api.rawg.io/api',
@@ -50,6 +50,10 @@ class APIClient<T> {
     .then(res => res.data);
     }
   
+    get = (id: number | string) => {
+        return axiosInstance.get<T>(this.endpoint + '/' + id)
+        .then(res => res.data);
+    };
 
     
 }
