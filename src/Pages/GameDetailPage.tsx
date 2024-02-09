@@ -7,6 +7,9 @@ import RectangleUI from "../components/RectangleUI";
 import DefinitionItems from "../components/DefinitionItems";
 import CriticScore from "../components/CriticScore";
 import GameAttributes from "../components/GameAttributes";
+import useTrailer from "../Hooks/useTrailer";
+import GameTrailer from "../components/GameTrailer";
+import GameScreenShots from "../components/GameScreenShots";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -25,6 +28,8 @@ const GameDetailPage = () => {
       /> */}
 
       <GameAttributes game={game} />
+      <GameTrailer gameId={game.id} />
+      <GameScreenShots gameId={game.id} />
     </>
   );
 };
