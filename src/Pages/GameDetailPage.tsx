@@ -1,9 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useGame from "../Hooks/useGame";
-import { Text, Heading, Spinner } from "@chakra-ui/react";
+import { Text, Heading, Spinner, SimpleGrid } from "@chakra-ui/react";
 import ExpandableText from "../components/ExanpandableText";
 import RectangleUI from "../components/RectangleUI";
+import DefinitionItems from "../components/DefinitionItems";
+import CriticScore from "../components/CriticScore";
+import GameAttributes from "../components/GameAttributes";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -16,12 +19,12 @@ const GameDetailPage = () => {
     <>
       <Heading>{game.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
-      <RectangleUI
+      {/* <RectangleUI
         parent_platforms={game.parent_platforms}
         metascore={game.metacritic}
-        genres={[]}
-        publishers={[]}
-      />
+      /> */}
+
+      <GameAttributes game={game} />
     </>
   );
 };

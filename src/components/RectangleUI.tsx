@@ -16,9 +16,6 @@ export interface Props {
 
 const RectangleUI: React.FC<Props> = ({ parent_platforms, metascore }) => {
   const columns = useBreakpointValue({ base: 1, md: 2 });
-  console.log(metascore);
-  const platformsArray = parent_platforms.map((p) => p.platform);
-  console.log(platformsArray);
   return (
     <>
       <Grid
@@ -27,7 +24,10 @@ const RectangleUI: React.FC<Props> = ({ parent_platforms, metascore }) => {
         gap={4} // Adjust the gap between cells as needed
       >
         <GridItem bg="blue.200" borderRadius="md">
-          <Text></Text>
+          <Heading>Platforms</Heading>
+          {parent_platforms?.map(({ platform }) => (
+            <Text key={platform.id}>{platform.name}</Text>
+          ))}
         </GridItem>
         <GridItem borderRadius="md">
           <Heading>Metascore</Heading>
