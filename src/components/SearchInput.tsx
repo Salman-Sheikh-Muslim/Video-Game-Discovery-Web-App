@@ -17,6 +17,7 @@ const SearchInput = () => {
       <InputGroup>
         <InputLeftElement children={<BsSearch />} />
         <Input
+          onChange={(event) => setSearchText(event.target.value)}
           ref={ref}
           borderRadius={20}
           placeholder="Search Games..."

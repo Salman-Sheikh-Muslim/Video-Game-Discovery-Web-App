@@ -1,7 +1,14 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import useGame from "../Hooks/useGame";
-import { Text, Heading, Spinner, SimpleGrid } from "@chakra-ui/react";
+import {
+  Box,
+  Text,
+  Heading,
+  Spinner,
+  SimpleGrid,
+  GridItem,
+} from "@chakra-ui/react";
 import ExpandableText from "../components/ExanpandableText";
 import RectangleUI from "../components/RectangleUI";
 import DefinitionItems from "../components/DefinitionItems";
@@ -20,16 +27,22 @@ const GameDetailPage = () => {
 
   return (
     <>
-      <Heading>{game.name}</Heading>
-      <ExpandableText>{game.description_raw}</ExpandableText>
       {/* <RectangleUI
         parent_platforms={game.parent_platforms}
         metascore={game.metacritic}
       /> */}
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={5}>
+        <GridItem>
+          <Heading>{game.name}</Heading>
+          <ExpandableText>{game.description_raw}</ExpandableText>
+          <GameAttributes game={game} />
+        </GridItem>
 
-      <GameAttributes game={game} />
-      <GameTrailer gameId={game.id} />
-      <GameScreenShots gameId={game.id} />
+        <GridItem>
+          <GameTrailer gameId={game.id} />
+          <GameScreenShots gameId={game.id} />
+        </GridItem>
+      </SimpleGrid>
     </>
   );
 };
