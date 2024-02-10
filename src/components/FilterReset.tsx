@@ -65,7 +65,7 @@ const FilterReset = () => {
           />
         </Flex>
       )}
-      {searchText && (
+      {/* {searchText && (
         <Flex alignItems="center" ml={4}>
           <Heading fontSize="md">{searchText}</Heading>
           <IconButton
@@ -75,7 +75,7 @@ const FilterReset = () => {
             onClick={resetSearchText}
           />
         </Flex>
-      )}
+      )} */}
       {order && (
         <Flex alignItems="center" ml={4}>
           <Heading fontSize="md">{order.label}</Heading>

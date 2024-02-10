@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import NavBar from "../components/navbar";
 import { Image, Box, Button } from "@chakra-ui/react";
 import { HashLink as Link } from "react-router-hash-link";
-import { IoMdArrowDropupCircle } from "react-icons/io";
+import { IoIosArrowDropupCircle } from "react-icons/io";
 
 const Layout = () => {
   const scrollToTop = () => {
@@ -24,7 +24,7 @@ const Layout = () => {
             right={["16px", "84px", "84px", "84px", "120px"]}
             zIndex={2}
           >
-            <Image as={IoMdArrowDropupCircle} w="60px" h="60px" />
+            <Image as={IoIosArrowDropupCircle} w="60px" h="60px" />
           </Box>
         </Button>
       </Box>

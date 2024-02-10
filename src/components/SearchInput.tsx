@@ -10,6 +10,13 @@ const SearchInput = () => {
 
   const navigate = useNavigate();
 
+  const handleBlur = () => {
+    if (ref.current && ref.current.value.length !== 0) {
+      ref.current.value = "";
+      setSearchText(undefined);
+    }
+  };
+
   return (
     <form
       onSubmit={(event) => {
@@ -33,6 +40,7 @@ const SearchInput = () => {
               navigate("/");
             }
           }}
+          onBlur={handleBlur}
           ref={ref}
           borderRadius={20}
           placeholder="Search Games..."
