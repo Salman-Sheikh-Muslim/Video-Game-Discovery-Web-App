@@ -6,6 +6,7 @@ import GenreList from "../components/GenreList";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
 import FilterReset from "../components/FilterReset";
+import GenreSelector from "../components/GenreSelector";
 
 const HomePage = () => {
   return (
@@ -32,6 +33,11 @@ const HomePage = () => {
           <GameHeading />
           <FilterReset />
           <Flex paddingBottom={10} marginBottom={1}>
+            <Show below="lg">
+              <Box marginRight={5}>
+                <GenreSelector />
+              </Box>
+            </Show>
             <Box marginRight={5}>
               <PlatformSelector />
             </Box>
