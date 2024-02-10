@@ -5,6 +5,7 @@ import GameHeading from "../components/GameHeading";
 import GenreList from "../components/GenreList";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
+import FilterReset from "../components/FilterReset";
 
 const HomePage = () => {
   return (
@@ -28,6 +29,7 @@ const HomePage = () => {
         </Show>
         <GridItem padding={5} area="main">
           <GameHeading />
+          <FilterReset />
           <Flex paddingBottom={10} marginBottom={1}>
             <Box marginRight={5}>
               <PlatformSelector />

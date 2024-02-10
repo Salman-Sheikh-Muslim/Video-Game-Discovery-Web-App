@@ -14,6 +14,7 @@ const PlatformSelector = () => {
   const selectedPlatform = useLookUpPlatform(selectedPlatformId);
   if (error) return null;
 
+  console.log("Platform Selector Default Value: " + selectedPlatform);
   return (
     //Menu chakra defined component can be used to render a beauiful drop down list.
     <Menu>

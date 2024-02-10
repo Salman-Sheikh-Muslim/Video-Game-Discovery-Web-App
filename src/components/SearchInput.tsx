@@ -24,8 +24,14 @@ const SearchInput = () => {
         <InputLeftElement children={<BsSearch />} />
         <Input
           onChange={(event) => {
-            setSearchText(event.target.value);
-            navigate("/");
+            if (event.target.value.length >= 3) {
+              setSearchText(event.target.value);
+              navigate("/");
+            }
+            if (event.target.value.length <= 2) {
+              setSearchText(undefined);
+              navigate("/");
+            }
           }}
           ref={ref}
           borderRadius={20}

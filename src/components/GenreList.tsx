@@ -39,6 +39,9 @@ const GenreList = () => {
         ))} */
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const setGenreId = useGameQueryStore((s) => s.setGenreId);
+
+  console.log("Selected Genre Default Value: " + selectedGenreId);
+
   return (
     <>
       <Heading fontSize="2xl" marginBottom={3}>
