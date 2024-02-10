@@ -1,4 +1,4 @@
-import { Box, Grid, Show, GridItem, Flex } from "@chakra-ui/react";
+import { Box, Grid, Show, GridItem, Flex, Image } from "@chakra-ui/react";
 import React from "react";
 import GameGrid from "../components/GameGrid";
 import GameHeading from "../components/GameHeading";
@@ -6,10 +6,13 @@ import GenreList from "../components/GenreList";
 import PlatformSelector from "../components/PlatformSelector";
 import SortSelector from "../components/SortSelector";
 import FilterReset from "../components/FilterReset";
+import { HashLink as Link } from "react-router-hash-link";
+import { IoMdArrowDropupCircle } from "react-icons/io";
 
 const HomePage = () => {
   return (
     <>
+      <div id="top"></div>
       <Grid
         templateAreas={{
           base: `"main"`,
@@ -38,6 +41,16 @@ const HomePage = () => {
           </Flex>
           <GameGrid />
         </GridItem>
+        <Link to="/#top">
+          <Box
+            position="fixed"
+            bottom="20px"
+            right={["16px", "84px", "84px", "84px", "120px"]}
+            zIndex={2}
+          >
+            <Image as={IoMdArrowDropupCircle} w="60px" h="60px" />
+          </Box>
+        </Link>
       </Grid>
     </>
   );

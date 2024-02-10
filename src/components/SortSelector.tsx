@@ -1,18 +1,11 @@
 import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { BsChevronBarDown } from "react-icons/bs";
 import useGameQueryStore from "../storeGameQuery";
+import { sortOrders } from "../entities/sortOrders";
 
 const SortSelector = () => {
   const selectedSortOrder = useGameQueryStore((s) => s.gameQuery.sortOrder);
   const setSortOrder = useGameQueryStore((s) => s.setSortOrder);
-  const sortOrders = [
-    { value: "", label: "Relevance" }, //Default Order
-    { value: "added", label: "Date Added" }, //Adding hypen to show newest games first
-    { value: "name", label: "Name" },
-    { value: "-released", label: "Release Date" },
-    { value: "-metacritic", label: "Popularity" },
-    { value: "-rating", label: "Average Rating" },
-  ];
 
   const currentSortOrder = sortOrders.find(
     (order) => order.value === selectedSortOrder
