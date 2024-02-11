@@ -43,7 +43,7 @@ const SearchInput = () => {
           onBlur={handleBlur}
           ref={ref}
           borderRadius={20}
-          placeholder="Search Games..."
+          placeholder="Search Games... Type at least 3 characters"
           variant="filled"
         />
       </InputGroup>
